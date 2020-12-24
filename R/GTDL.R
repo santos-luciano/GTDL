@@ -25,17 +25,20 @@
 #'denGTDL<- dGTDL(t,lambda,alpha,gamma,log = FALSE)
 #'plot(x = t,y = denGTDL)
 
+#'@rdname GTDL 
+#'@export
 dGTDL<-function(t,lambda,alpha,gamma,log = FALSE){
   if(log == FALSE)
-  (lambda*exp(t*alpha+gamma)/(1+exp(t*alpha+gamma)))*((1+exp(t*alpha+gamma))/(1+exp(gamma)))^(-lambda/alpha)
+  ((lambda*exp(t*alpha+gamma))/(1+exp(t*alpha+gamma)))*((1+exp(t*alpha+gamma))/(1+exp(gamma)))^(-lambda/alpha)
   else log((lambda*exp(t*alpha+gamma)/(1+exp(t*alpha+gamma)))*((1+exp(t*alpha+gamma))/(1+exp(gamma)))^(-lambda/alpha))
   }
-
+#'@rdname GTDL 
+#'@export
 hGTDL<-function(t,lambda,alpha,gamma){
-  lambda*exp(t*alpha+gamma)/(1+exp(t*alpha+gamma))
+  (lambda*exp(t*alpha+gamma))/(1+exp(t*alpha+gamma))
 }
-
-
+#'@rdname GTDL 
+#'@export
 sGTDL<-function(t,lambda,alpha,gamma){
   dGTDL(t,lambda,alpha,gamma)/hGTDL(t,lambda,alpha,gamma)
 }
