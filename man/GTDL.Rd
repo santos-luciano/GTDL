@@ -5,6 +5,10 @@
 \alias{dGTDL}
 \alias{hGTDL}
 \alias{sGTDL}
+<<<<<<< HEAD
+=======
+\alias{rGTDL}
+>>>>>>> e21f99b (GTDL)
 \title{The Distribution GTDL}
 \usage{
 dGTDL(t, lambda, alpha, gamma, log = FALSE)
@@ -12,6 +16,11 @@ dGTDL(t, lambda, alpha, gamma, log = FALSE)
 hGTDL(t, lambda, alpha, gamma)
 
 sGTDL(t, lambda, alpha, gamma)
+<<<<<<< HEAD
+=======
+
+rGTDL(n, lambda, alpha, gamma)
+>>>>>>> e21f99b (GTDL)
 }
 \arguments{
 \item{t}{non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.}

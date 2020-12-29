@@ -7,6 +7,7 @@
 #'@param alpha,gamma scalars.
 #'@param lambda non-negative.
 #'@param n number of observations. If length(n) > 1, the length is taken to be the number required.
+#'@param pcensura sample censorship rate
 #'
 #'@author Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}
 #'@author Luciano S. Santos \email{lucianno0800@gmail.com}
@@ -18,12 +19,32 @@
 #' Mackenzie,G. ,(2016),Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family
 #'
 #'@examples
-#'t <- seq(0,20,by = 0.01)
-#'lambda <- 1
-#'alpha <- -0.05
-#'gamma <- -1
-#'denGTDL<- dGTDL(t,lambda,alpha,gamma,log = FALSE)
-#'plot(x = t,y = denGTDL)
+#' # Not run:
+#' library(GTDL)
+#' t <- seq(0,20,by = 0.1)
+#' lambda <- 1.00
+#' alpha <- -0.05
+#' gamma <- -1.00
+#' y1 <- hGTDL(t,lambda,alpha,gamma)
+#' y2 <- sGTDL(t,lambda,alpha,gamma)
+#' y3 <- dGTDL(t,lambda,alpha,gamma,log = FALSE)
+#' tt <- as.matrix(cbind(t,t,t))
+#' yy <- as.matrix(cbind(y1,y2,y3))
+#' matplot(tt,yy,type="l",xlab="time",ylab="",lty = 1:3,col=1:3,lwd=2)
+#' # End(Not run)
+#' 
+#' # Not run:
+#' y1 <- hGTDL(t,1,0.5,-1.0)
+#' y2 <- hGTDL(t,1,0.25,-1.0)
+#' y3 <- hGTDL(t,1,-0.25,1.0)
+#' y4 <- hGTDL(t,1,-0.50,1.0)
+#' y5 <- hGTDL(t,1,-0.06,-1.6)
+#' tt <- as.matrix(cbind(t,t,t,t,t))
+#' yy <- as.matrix(cbind(y1,y2,y3,y4,y5))
+#' matplot(tt,yy,type="l",xlab="time",ylab="Hazard function",lty = 1:3,col=1:3,lwd=2)
+#' # End(Not run)
+NULL
+
 
 #'@rdname GTDL 
 #'@export
@@ -32,14 +53,76 @@ dGTDL<-function(t,lambda,alpha,gamma,log = FALSE){
   ((lambda*exp(t*alpha+gamma))/(1+exp(t*alpha+gamma)))*((1+exp(t*alpha+gamma))/(1+exp(gamma)))^(-lambda/alpha)
   else log((lambda*exp(t*alpha+gamma)/(1+exp(t*alpha+gamma)))*((1+exp(t*alpha+gamma))/(1+exp(gamma)))^(-lambda/alpha))
   }
+
+
+
 #'@rdname GTDL 
 #'@export
 hGTDL<-function(t,lambda,alpha,gamma){
   (lambda*exp(t*alpha+gamma))/(1+exp(t*alpha+gamma))
 }
+
+
+
 #'@rdname GTDL 
 #'@export
 sGTDL<-function(t,lambda,alpha,gamma){
   dGTDL(t,lambda,alpha,gamma)/hGTDL(t,lambda,alpha,gamma)
 }
+
+
+
+
+#'@rdname GTDL
+#'@importFrom stats runif
+#'@export
+
+rGTDL<-function(n,lambda,alpha,gamma){
+  u<-runif(n)
+  t<-(1/alpha)*(log((1+exp(gamma))*(1-u)^(-alpha/lambda)-1)-gamma)
+  return(t)
+}
+
+#'@rdname GTDL
+#'@importFrom stats runif
+#'@export
+
+rCENGTDL<-function(n,lambda,alpha,gamma,pcensura){
+  ncensura<-n*pcensura
+  
+  
+  t1<-rGTDL(1,lambda,alpha,gamma)
+  t2<-rGTDL(1,lambda,alpha,gamma)
+  
+  if(min(t1,t2)==t1){
+    amostra<-data.frame(t=t1,censura = 1)
+  }
+  if(min(t1,t2)==t2){
+    amostra<-data.frame(t=t2,censura = 0)
+  }
+  
+  while(sum(amostra$censura==0)<ncensura){
+    t1<-rGTDL(1,lambda,alpha,gamma)
+    t2<-rGTDL(1,lambda,alpha,gamma)
+    if(min(t1,t2)==t1){
+      aux<-c(t1,1)
+      amostra<-rbind(amostra,aux)
+    }
+    if(min(t1,t2)==t2){
+      aux<-c(t2,0)
+      amostra<-rbind(amostra,aux)
+    }
+  }
+  while(sum(amostra$censura==1)!=n-ncensura){
+    t1<-rGTDL(1,lambda,alpha,gamma)
+    t2<-rGTDL(1,lambda,alpha,gamma)
+    if(min(t1,t2)==t1){
+      aux<-c(t1,1)
+      amostra<-rbind(amostra,aux)
+    }
+  }
+  
+return(amostra)
+}
+
 

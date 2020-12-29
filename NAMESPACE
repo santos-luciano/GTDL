@@ -2,4 +2,8 @@
 
 export(dGTDL)
 export(hGTDL)
+<<<<<<< HEAD
+=======
+export(rGTDL)
+>>>>>>> e21f99b (GTDL)
 export(sGTDL)
