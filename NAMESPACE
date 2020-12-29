@@ -2,8 +2,7 @@
 
 export(dGTDL)
 export(hGTDL)
-<<<<<<< HEAD
-=======
+export(rCENGTDL)
 export(rGTDL)
->>>>>>> e21f99b (GTDL)
 export(sGTDL)
+importFrom(stats,runif)

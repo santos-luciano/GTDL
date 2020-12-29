@@ -5,10 +5,8 @@
 \alias{dGTDL}
 \alias{hGTDL}
 \alias{sGTDL}
-<<<<<<< HEAD
-=======
 \alias{rGTDL}
->>>>>>> e21f99b (GTDL)
+\alias{rCENGTDL}
 \title{The Distribution GTDL}
 \usage{
 dGTDL(t, lambda, alpha, gamma, log = FALSE)
@@ -16,11 +14,10 @@ dGTDL(t, lambda, alpha, gamma, log = FALSE)
 hGTDL(t, lambda, alpha, gamma)
 
 sGTDL(t, lambda, alpha, gamma)
-<<<<<<< HEAD
-=======
 
 rGTDL(n, lambda, alpha, gamma)
->>>>>>> e21f99b (GTDL)
+
+rCENGTDL(n, lambda, alpha, gamma, pcensura)
 }
 \arguments{
 \item{t}{non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.}
@@ -30,17 +27,37 @@ rGTDL(n, lambda, alpha, gamma)
 \item{alpha, gamma}{scalars.}
 
 \item{n}{number of observations. If length(n) > 1, the length is taken to be the number required.}
+
+\item{pcensura}{sample censorship rate}
 }
 \description{
 Density, survival function, failure function and random generation for the GTDL distribution.
 }
 \examples{
-t <- seq(0,20,by = 0.01)
-lambda <- 1
+# Not run:
+library(GTDL)
+t <- seq(0,20,by = 0.1)
+lambda <- 1.00
 alpha <- -0.05
-gamma <- -1
-denGTDL<- dGTDL(t,lambda,alpha,gamma,log = FALSE)
-plot(x = t,y = denGTDL)
+gamma <- -1.00
+y1 <- hGTDL(t,lambda,alpha,gamma)
+y2 <- sGTDL(t,lambda,alpha,gamma)
+y3 <- dGTDL(t,lambda,alpha,gamma,log = FALSE)
+tt <- as.matrix(cbind(t,t,t))
+yy <- as.matrix(cbind(y1,y2,y3))
+matplot(tt,yy,type="l",xlab="time",ylab="",lty = 1:3,col=1:3,lwd=2)
+# End(Not run)
+
+# Not run:
+y1 <- hGTDL(t,1,0.5,-1.0)
+y2 <- hGTDL(t,1,0.25,-1.0)
+y3 <- hGTDL(t,1,-0.25,1.0)
+y4 <- hGTDL(t,1,-0.50,1.0)
+y5 <- hGTDL(t,1,-0.06,-1.6)
+tt <- as.matrix(cbind(t,t,t,t,t))
+yy <- as.matrix(cbind(y1,y2,y3,y4,y5))
+matplot(tt,yy,type="l",xlab="time",ylab="Hazard function",lty = 1:3,col=1:3,lwd=2)
+# End(Not run)
 }
 \references{
 Mackenzie,G. ,(2016),Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family
