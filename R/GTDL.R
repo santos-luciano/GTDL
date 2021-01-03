@@ -8,6 +8,7 @@
 #'@param lambda non-negative.
 #'@param n number of observations. If length(n) > 1, the length is taken to be the number required.
 #'@param pcensura sample censorship rate
+#'@param log asdas
 #'
 #'@author Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}
 #'@author Luciano S. Santos \email{lucianno0800@gmail.com}

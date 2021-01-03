@@ -26,6 +26,8 @@ rCENGTDL(n, lambda, alpha, gamma, pcensura)
 
 \item{alpha, gamma}{scalars.}
 
+\item{log}{asdas}
+
 \item{n}{number of observations. If length(n) > 1, the length is taken to be the number required.}
 
 \item{pcensura}{sample censorship rate}
