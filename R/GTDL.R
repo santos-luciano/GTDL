@@ -125,12 +125,3 @@ rCENGTDL<-function(n,lambda,alpha,gamma,pcensura){
   
 return(amostra)
 }
-lambda<-1
-alpha<- -0.05
-gamma<- -1
-for(i in 1:1){
-u<-runif(1)
-print((1/alpha)*(log((1+exp(gamma))*(1-u)^(-alpha/lambda)-1)-gamma))
-print(u)
-
-}
