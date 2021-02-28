@@ -23,6 +23,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
     maxLik,
-    miscTools
+Suggests:
+    stats,
 Depends: 
     R (>= 2.10)
