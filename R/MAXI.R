@@ -9,7 +9,7 @@
 #'@references
 #'
 #' How to identify bathtub hazard rate (Aarset,1987 )
-#' Mack
+#' Mackenzie,G.,(2016).Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family. Journal of the Royal Statistical Society. Series D (The Statistician), Vol. 45, No. 1 (1996), pp. 21-34
 #'
 #'@examples
 #'
@@ -34,7 +34,6 @@ likeGTDL<-function(param){
 #'@export
 #'@import maxLik
 #'
-
 
 MaxGTDL<-function(start,...){
   aux<-suppressWarnings(maxLik(likeGTDL,start = start
