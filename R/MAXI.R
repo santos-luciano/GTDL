@@ -9,7 +9,7 @@
 #'@references
 #'
 #' Aarset,M. V.,(1987).How to identify bathtub hazard rate.Ieee transactions on reliability, vol. r-36, no. 1.
-#' Mackenzie,G.,(2016).Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family. Journal of the Royal Statistical Society. Series D (The Statistician), Vol. 45, No. 1 (1996), pp. 21-34
+#' Mackenzie,G.,(1996).Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family. Journal of the Royal Statistical Society. Series D (The Statistician), Vol. 45, No. 1, pp. 21-34
 #'
 #'@examples
 #'
