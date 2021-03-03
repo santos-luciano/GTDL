@@ -48,7 +48,10 @@ NULL
 
 #'@rdname GTDL 
 #'@export
-dGTDL<-function(t,lambda,alpha,gamma,log = FALSE){
+dGTDL<-function(param,t,log = FALSE){
+  lambda <- param[1]
+  alpha <- param[2]
+  gamma <- param [3]
   t<-((lambda*exp(t*alpha+gamma))/(1+exp(t*alpha+gamma)))*((1+exp(t*alpha+gamma))/(1+exp(gamma)))^(-lambda/alpha)
   if(log == FALSE){
     return(t)

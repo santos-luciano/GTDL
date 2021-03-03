@@ -8,8 +8,8 @@
 #'
 #'@references
 #'
-#' Aarset,M. V.,(1987).How to identify bathtub hazard rate.Ieee transactions on reliability, vol. r-36, no. 1.
-#' Mackenzie,G.,(1996).Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family. Journal of the Royal Statistical Society. Series D (The Statistician), Vol. 45, No. 1, pp. 21-34
+#' Aarset,M. V.,(1987). How to identify bathtub hazard rate. IEEE transactions on reliability.
+#' Mackenzie,G.,(1996). Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family. Journal of the Royal Statistical Society. Series D (The Statistician), (45), 21-34.
 #'
 #'@examples
 #'
@@ -19,24 +19,19 @@
 #'t<-artset1987
 #'max<-MaxGTDL(c(1,-0.05,-1))
 #'
-#'@rdname MaxGTDL
-#'@export
 
-likeGTDL<-function(param){
-  lambda<-param[1]
-  alpha<-param[2]
-  gamma<-param[3]
-  f<-sum(dGTDL(t,lambda,alpha,gamma,log = TRUE))
-  return(f)
-}
+
 
 #'@rdname MaxGTDL
 #'@export
-#'@import maxLik
 #'
 
-MaxGTDL<-function(start,...){
-  aux<-suppressWarnings(maxLik(likeGTDL,start = start
-              ,grad = NULL,hess = NULL))
+MaxGTDL<-function(start,t,...){
+  likeGTDL<-function(param,t){ 
+    f1<-sum(dGTDL(param = param,t = t,log = TRUE))
+    return(-f1)
+  }
+  aux<-suppressWarnings(optim(par = start,fn = likeGTDL,method = "BFGS",t = t,hessian = TRUE))
+              
   return(aux)
 }

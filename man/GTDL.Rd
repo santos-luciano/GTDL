@@ -8,7 +8,7 @@
 \alias{rGTDL}
 \title{The Distribution GTDL}
 \usage{
-dGTDL(t, lambda, alpha, gamma, log = FALSE)
+dGTDL(param, t, log = FALSE)
 
 hGTDL(t, lambda, alpha, gamma)
 
@@ -19,11 +19,11 @@ rGTDL(n, lambda, alpha, gamma)
 \arguments{
 \item{t}{non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.}
 
+\item{log}{logical; if TRUE, probabilities p are given as log(p).}
+
 \item{lambda}{non-negative.}
 
 \item{alpha, gamma}{scalars.}
-
-\item{log}{logical; if TRUE, probabilities p are given as log(p).}
 
 \item{n}{number of observations. If length(n) > 1, the length is taken to be the number required.}
 
@@ -58,7 +58,7 @@ matplot(tt,yy,type="l",xlab="time",ylab="Hazard function",lty = 1:3,col=1:3,lwd=
 
 }
 \references{
-Mackenzie,G.,(2016).Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family. Journal of the Royal Statistical Society. Series D (The Statistician), Vol. 45, No. 1 (1996), pp. 21-34
+Mackenzie,G.,(1996).Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family. Journal of the Royal Statistical Society. Series D (The Statistician), Vol. 45, No. 1, pp. 21-34.
 }
 \author{
 Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}

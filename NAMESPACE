@@ -3,7 +3,5 @@
 export(MaxGTDL)
 export(dGTDL)
 export(hGTDL)
-export(likeGTDL)
 export(rGTDL)
 export(sGTDL)
-import(maxLik)

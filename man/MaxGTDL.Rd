@@ -2,12 +2,9 @@
 % Please edit documentation in R/MAXI.R
 \name{MaxGTDL}
 \alias{MaxGTDL}
-\alias{likeGTDL}
 \title{Maximum probability estimate of the GTDL package}
 \usage{
-likeGTDL(param)
-
-MaxGTDL(start, ...)
+MaxGTDL(start, t, ...)
 }
 \description{
 This is the main interface of the maxLik package and the function that performs the maximum probability estimate of the GTDL package
@@ -22,8 +19,8 @@ max<-MaxGTDL(c(1,-0.05,-1))
 
 }
 \references{
-How to identify bathtub hazard rate (Aarset,1987 )
-Mack
+Aarset,M. V.,(1987). How to identify bathtub hazard rate. IEEE transactions on reliability.
+Mackenzie,G.,(1996). Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family. Journal of the Royal Statistical Society. Series D (The Statistician), (45), 21-34.
 }
 \author{
 Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}
