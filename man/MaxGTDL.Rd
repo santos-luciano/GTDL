@@ -2,8 +2,11 @@
 % Please edit documentation in R/MAXI.R
 \name{MaxGTDL}
 \alias{MaxGTDL}
+\alias{likeGTDL}
 \title{Maximum probability estimate of the GTDL package}
 \usage{
+likeGTDL(param, t1)
+
 MaxGTDL(start, t, ...)
 }
 \description{

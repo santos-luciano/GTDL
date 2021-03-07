@@ -8,24 +8,24 @@
 \alias{rGTDL}
 \title{The Distribution GTDL}
 \usage{
-dGTDL(param, t, log = FALSE)
+dGTDL(t, param, log = FALSE)
 
-hGTDL(t, lambda, alpha, gamma)
+hGTDL(t, param)
 
-sGTDL(t, lambda, alpha, gamma)
+sGTDL(t, param)
 
-rGTDL(n, lambda, alpha, gamma)
+rGTDL(n, param)
 }
 \arguments{
 \item{t}{non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.}
 
 \item{log}{logical; if TRUE, probabilities p are given as log(p).}
 
-\item{lambda}{non-negative.}
+\item{n}{number of observations. If length(n) > 1, the length is taken to be the number required.}
 
 \item{alpha, gamma}{scalars.}
 
-\item{n}{number of observations. If length(n) > 1, the length is taken to be the number required.}
+\item{lambda}{non-negative.}
 
 \item{pcensura}{sample censorship rate}
 }

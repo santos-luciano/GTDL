@@ -20,6 +20,11 @@
 #'max<-MaxGTDL(c(1,-0.05,-1))
 #'
 
+likeGTDL<-function(param,t1){ 
+  f1<-sum(dGTDL(param = param,t = t1,log = TRUE))
+  return(-f1)
+}
+
 
 
 #'@rdname MaxGTDL
@@ -27,11 +32,15 @@
 #'
 
 MaxGTDL<-function(start,t,...){
-  likeGTDL<-function(param,t){ 
-    f1<-sum(dGTDL(param = param,t = t,log = TRUE))
-    return(-f1)
-  }
-  aux<-suppressWarnings(optim(par = start,fn = likeGTDL,method = "BFGS",t = t,hessian = TRUE))
-              
-  return(aux)
+  
+  op<-suppressWarnings(optim(par = start,fn = likeGTDL,method = "BFGS",t1 = t,hessian = TRUE))
+  se <- sqrt(diag(solve(op$hessian)))
+  z <- op$par/se
+  pvalue <- 2 * (1 - stats::pnorm(abs(z)))
+  TAB <- cbind(Estimate = op$par, Std.Error = se,
+               z.value = z, `Pr(>|z|)` = pvalue)
+  mTab <- list( Lik = op$value,
+                Converged = op$convergence, Coefficients = TAB)
+  return(mTab)
+  
 }

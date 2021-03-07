@@ -48,16 +48,18 @@ NULL
 
 #'@rdname GTDL 
 #'@export
-dGTDL<-function(param,t,log = FALSE){
+dGTDL<-function(t,param,log = FALSE){
   lambda <- param[1]
   alpha <- param[2]
   gamma <- param [3]
-  t<-((lambda*exp(t*alpha+gamma))/(1+exp(t*alpha+gamma)))*((1+exp(t*alpha+gamma))/(1+exp(gamma)))^(-lambda/alpha)
+  d1<-((lambda*exp(t*alpha+gamma))/(1+exp(t*alpha+gamma)))
+  d2 <- ((1+exp(t*alpha+gamma))/(1+exp(gamma)))^(-lambda/alpha)
+  
   if(log == FALSE){
-    return(t)
+    return(d1*d2)
   }
   else {
-    return(log(t))
+    return(log(d1*d2))
     }
   }
 
@@ -65,16 +67,24 @@ dGTDL<-function(param,t,log = FALSE){
 
 #'@rdname GTDL 
 #'@export
-hGTDL<-function(t,lambda,alpha,gamma){
-  (lambda*exp(t*alpha+gamma))/(1+exp(t*alpha+gamma))
+hGTDL<-function(t,param){
+  lambda <- param[1]
+  alpha <- param[2]
+  gamma <- param[3]
+  h1 <- (lambda*exp(t*alpha+gamma))
+  h2 <- (1+exp(t*alpha+gamma))
+  return(h1/h2)
 }
 
 
 
 #'@rdname GTDL 
 #'@export
-sGTDL<-function(t,lambda,alpha,gamma){
-  dGTDL(t,lambda,alpha,gamma)/hGTDL(t,lambda,alpha,gamma)
+sGTDL<-function(t,param){
+  lambda <- param[1]
+  alpha <- param[2]
+  gamma <- param[3]
+  return(dGTDL(t,param)/hGTDL(t,param))
 }
 
 
@@ -83,8 +93,11 @@ sGTDL<-function(t,lambda,alpha,gamma){
 #'@rdname GTDL
 #'@export
 
-rGTDL<-function(n,lambda,alpha,gamma){
-  u<-runif(n)
-  t<-(1/alpha)*(log((1+exp(gamma))*(1-u)^(-alpha/lambda)-1)-gamma)
+rGTDL<-function(n,param){
+  lambda <- param[1]
+  alpha <- param[2]
+  gamma <- param[3]
+  u <- runif(n)
+  t <- (1/alpha)*(log((1+exp(gamma))*(1-u)^(-alpha/lambda)-1)-gamma)
   return(t)
 }
