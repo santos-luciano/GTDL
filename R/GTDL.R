@@ -52,7 +52,7 @@ dGTDL<-function(t,param,log = FALSE){
   lambda <- param[1]
   alpha <- param[2]
   gamma <- param [3]
-  d1<-((lambda*exp(t*alpha+gamma))/(1+exp(t*alpha+gamma)))
+  d1 <- ((lambda*exp(t*alpha+gamma))/(1+exp(t*alpha+gamma)))
   d2 <- ((1+exp(t*alpha+gamma))/(1+exp(gamma)))^(-lambda/alpha)
   
   if(log == FALSE){
@@ -67,7 +67,7 @@ dGTDL<-function(t,param,log = FALSE){
 
 #'@rdname GTDL 
 #'@export
-hGTDL<-function(t,param){
+hGTDL <- function(t,param){
   lambda <- param[1]
   alpha <- param[2]
   gamma <- param[3]
@@ -80,7 +80,7 @@ hGTDL<-function(t,param){
 
 #'@rdname GTDL 
 #'@export
-sGTDL<-function(t,param){
+sGTDL <- function(t,param){
   lambda <- param[1]
   alpha <- param[2]
   gamma <- param[3]
@@ -93,7 +93,7 @@ sGTDL<-function(t,param){
 #'@rdname GTDL
 #'@export
 
-rGTDL<-function(n,param){
+rGTDL <- function(n,param){
   lambda <- param[1]
   alpha <- param[2]
   gamma <- param[3]

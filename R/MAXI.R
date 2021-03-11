@@ -13,15 +13,14 @@
 #'
 #'@examples
 #'
-#' ## times data (from Arset, 1987))
+#' # times data (from Aarset, 1987))
 #'
 #'data(artset1987)
-#'t<-artset1987
-#'max<-MaxGTDL(c(1,-0.05,-1))
+#'mod <- max<-MaxGTDL(c(1,-0.05,-1))
 #'
 
-likeGTDL<-function(param,t1){ 
-  f1<-sum(dGTDL(param = param,t = t1,log = TRUE))
+likeGTDL <- function(param,t1){ 
+  f1 <- sum(dGTDL(param = param,t = t1,log = TRUE))
   return(-f1)
 }
 
@@ -31,9 +30,9 @@ likeGTDL<-function(param,t1){
 #'@export
 #'
 
-MaxGTDL<-function(start,t,...){
+MaxGTDL <- function(start,t,...){
   
-  op<-suppressWarnings(optim(par = start,fn = likeGTDL,method = "BFGS",t1 = t,hessian = TRUE))
+  op <- suppressWarnings(optim(par = start,fn = likeGTDL,method = "BFGS",t1 = t,hessian = TRUE))
   se <- sqrt(diag(solve(op$hessian)))
   z <- op$par/se
   pvalue <- 2 * (1 - stats::pnorm(abs(z)))

@@ -14,11 +14,10 @@ This is the main interface of the maxLik package and the function that performs 
 }
 \examples{
 
-## times data (from Arset, 1987))
+# times data (from Aarset, 1987))
 
 data(artset1987)
-t<-artset1987
-max<-MaxGTDL(c(1,-0.05,-1))
+mod <- max<-MaxGTDL(c(1,-0.05,-1))
 
 }
 \references{
