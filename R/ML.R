@@ -1,5 +1,5 @@
-#'@name MaxGTDL2
-#'@title 
+#'@name max.GTDL
+#'@title Maximum probability estimate of the GTDL package
 #'
 #'
 #'@author Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}
@@ -9,19 +9,20 @@
 #'
 #'Colosimo, E. A.,() Análise de sobrevivência aplicada
 
-likeGTDL2 <- function(t1,censura,para){
-  l <- (hGTDL(t = t1,param = para)^censura)*sGTDL(t = t1,param = para)
-  ll <- prod(l)
-  return(ll)  
+like2 <- function(t,censur,para){
+  l <- (hGTDL(t = t,param = para)^censur)*sGTDL(t = t1,param = para)
+  ll <- sum(log(l))
+  return(-ll)  
 }
 
 
-#'@rdname MaxGTDL2
+#'@rdname max.GTDL
 #'@export
 
-MaxGTDL2 <- function(start,t,censur,...){
+max.GTDL <- function(start,t,censur){
   
-  op <- suppressWarnings(optim(par = start,fn = likeGTDL2,method = "BFGS",t1 = t,censura = censur,hessian = TRUE))
+  op <- suppressWarnings(optim(par = start,fn = like2,
+                               method = "BFGS",t = t,censura = censur,hessian = TRUE))
   se <- sqrt(diag(solve(op$hessian)))
   z <- op$par/se
   pvalue <- 2 * (1 - stats::pnorm(abs(z)))
