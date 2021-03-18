@@ -39,19 +39,20 @@ t <- seq(0,20,by = 0.1)
 lambda <- 1.00
 alpha <- -0.05
 gamma <- -1.00
-y1 <- hGTDL(t,lambda,alpha,gamma)
-y2 <- sGTDL(t,lambda,alpha,gamma)
-y3 <- dGTDL(t,lambda,alpha,gamma,log = FALSE)
+param <- c(lambda,alpha,gamma)
+y1 <- hGTDL(t,param)
+y2 <- sGTDL(t,param)
+y3 <- dGTDL(t,param,log = FALSE)
 tt <- as.matrix(cbind(t,t,t))
 yy <- as.matrix(cbind(y1,y2,y3))
 matplot(tt,yy,type="l",xlab="time",ylab="",lty = 1:3,col=1:3,lwd=2)
 
 
-y1 <- hGTDL(t,1,0.5,-1.0)
-y2 <- hGTDL(t,1,0.25,-1.0)
-y3 <- hGTDL(t,1,-0.25,1.0)
-y4 <- hGTDL(t,1,-0.50,1.0)
-y5 <- hGTDL(t,1,-0.06,-1.6)
+y1 <- hGTDL(t,c(1,0.5,-1.0))
+y2 <- hGTDL(t,c(1,0.25,-1.0))
+y3 <- hGTDL(t,c(1,-0.25,1.0))
+y4 <- hGTDL(t,c(1,-0.50,1.0))
+y5 <- hGTDL(t,c(1,-0.06,-1.6))
 tt <- as.matrix(cbind(t,t,t,t,t))
 yy <- as.matrix(cbind(y1,y2,y3,y4,y5))
 matplot(tt,yy,type="l",xlab="time",ylab="Hazard function",lty = 1:3,col=1:3,lwd=2)
