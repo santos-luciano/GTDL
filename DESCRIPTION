@@ -22,7 +22,7 @@ LazyData: TRUE
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
-    maxLik,
+    survival,
 Suggests:
     stats,
 Depends: 

@@ -1,7 +1,7 @@
 #' Hepatitis data
 #'
 #' @description A randomized clinical trial was carried out to investigate the effect of therapy with steroid in the treatment of acute
-#' viral hepatitis ( Gregory et al., 1975). Twenty and nine patients with this disease were randomized to receive a placebo or the steroid
+#' viral hepatitis (Gregory et al., 1975). Twenty and nine patients with this disease were randomized to receive a placebo or the steroid
 #' treatment. Each patient was followed up for 16 weeks or until death( event of interest) or even loss of follow-up.
 #'
 #' @docType data
@@ -14,11 +14,14 @@
 #' \item {censured:} {censored = 0, dead = 1}
 #' \item {group:} {control = 0, steroid = 1}
 #' }
-#' @references Colosimo, E.A . Análise de Sobrevivência Aplicada
-#' @examples
+#' @references
+#' 
+#'Colosimo, E. A; Giolo, S. R. Análise de sobrevivência aplicada. 1. ed. Blucher, 2006.
+#'Gregory et al., 1975)
 #'
+#'
+#' @examples
 #'
 #' data(hepatitis)
 #' head(hepatitis)
 #'
-NULL

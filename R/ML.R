@@ -1,3 +1,9 @@
+like2 <- function(t,censur,para){
+  l <- (hGTDL(t = t,param = para)^censur)*sGTDL(t = t,param = para)
+  ll <- sum(log(l))
+  return(-ll)  
+}
+
 #'@name max.GTDL
 #'@title Maximum probability estimate of the GTDL package
 #'
@@ -13,12 +19,12 @@
 #'Colosimo, E. A; Giolo, S. R. Análise de sobrevivência aplicada. 1. ed. Blucher, 2006.
 #'
 #'
-#'@exemple
+#'@example
 #'
 #'data(hepatis)
 #'maxparam <- max.GTDL(start = c(1,-0.05,-1),t = hepatitis$t, censur = hepatitis$censured)
-#'summARY
-NULL
+#'maxparam
+
 
 #'@rdname max.GTDL
 #'@export
@@ -39,8 +45,3 @@ maxGTDL <- function(start,t,censur){
 
 
 
-like2 <- function(t,censur,para){
-  l <- (hGTDL(t = t,param = para)^censur)*sGTDL(t = t,param = para)
-  ll <- sum(log(l))
-  return(-ll)  
-}

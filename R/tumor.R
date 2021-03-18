@@ -12,7 +12,10 @@
 #' \item {censured:} {censored = 0, dead = 1}
 #' \item {group:} {large tumor = 0, small tumor = 1}
 #' }
-#' @references Colosimo, E.A . Análise de Sobrevivência Aplicada
+#' @references
+#' 
+#'Colosimo, E. A and  Giolo, S. R. Análise de sobrevivência aplicada.  Edgard Blucher: São Paulo. 2006.
+#'
 #' @examples
 #'
 #'
