@@ -1,28 +1,31 @@
 #'@name max.GTDL
 #'@title Maximum probability estimate of the GTDL package
 #'
+#'@param start vector of parameters to obtaind maximum likelihood.
+#'@param t non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.
+#'@param censur non-negative random variable that represents whether the sample is censored or not.
 #'
 #'@author Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}
 #'@author Luciano S. Santos \email{lucianno0800@gmail.com}
 #'
+#'@references
+#'
+#'Colosimo, E. A; Giolo, S. R. Análise de sobrevivência aplicada. 1. ed. Blucher, 2006.
 #'
 #'
-#'Colosimo, E. A.,() Análise de sobrevivência aplicada
-
-like2 <- function(t,censur,para){
-  l <- (hGTDL(t = t,param = para)^censur)*sGTDL(t = t1,param = para)
-  ll <- sum(log(l))
-  return(-ll)  
-}
-
+#'@exemple
+#'
+#'data(hepatis)
+#'maxparam <- max.GTDL(start = c(1,-0.05,-1),t = hepatitis$t, censur = hepatitis$censured)
+#'summARY
+NULL
 
 #'@rdname max.GTDL
 #'@export
-
-max.GTDL <- function(start,t,censur){
+maxGTDL <- function(start,t,censur){
   
   op <- suppressWarnings(optim(par = start,fn = like2,
-                               method = "BFGS",t = t,censura = censur,hessian = TRUE))
+                               method = "BFGS",t = t,censur = censur,hessian = TRUE))
   se <- sqrt(diag(solve(op$hessian)))
   z <- op$par/se
   pvalue <- 2 * (1 - stats::pnorm(abs(z)))
@@ -34,3 +37,10 @@ max.GTDL <- function(start,t,censur){
   
 }
 
+
+
+like2 <- function(t,censur,para){
+  l <- (hGTDL(t = t,param = para)^censur)*sGTDL(t = t,param = para)
+  ll <- sum(log(l))
+  return(-ll)  
+}

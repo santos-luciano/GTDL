@@ -2,20 +2,26 @@
 % Please edit documentation in R/ML.R
 \name{max.GTDL}
 \alias{max.GTDL}
-\alias{like2}
+\alias{maxGTDL}
 \title{Maximum probability estimate of the GTDL package}
 \usage{
-like2(t, censur, para)
+maxGTDL(start, t, censur)
+}
+\arguments{
+\item{start}{vector of parameters to obtaind maximum likelihood.}
 
-\method{max}{GTDL}(start, t, censur)
+\item{t}{non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.}
+
+\item{censur}{non-negative random variable that represents whether the sample is censored or not.}
 }
 \description{
 Maximum probability estimate of the GTDL package
+}
+\references{
+Colosimo, E. A; Giolo, S. R. Análise de sobrevivência aplicada. 1. ed. Blucher, 2006.
 }
 \author{
 Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}
 
 Luciano S. Santos \email{lucianno0800@gmail.com}
-
-Colosimo, E. A.,() Análise de sobrevivência aplicada
 }

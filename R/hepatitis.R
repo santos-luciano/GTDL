@@ -12,7 +12,7 @@
 #' \itemize{
 #' \item {t:}{survival time in weeks}
 #' \item {censured:} {censored = 0, dead = 1}
-#' \item {group:} {control = 1, steroid = 2}
+#' \item {group:} {control = 0, steroid = 1}
 #' }
 #' @references Colosimo, E.A . Análise de Sobrevivência Aplicada
 #' @examples

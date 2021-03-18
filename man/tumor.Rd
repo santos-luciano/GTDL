@@ -7,26 +7,16 @@
 \format{
 This data frame contains the following columns:
 \itemize{
-\item Y: The number epileptic seizure.
-\item trt: Treatment: binary indicators for the prograbide and placebo groups.
-\item period: binary indicator for the baseline period.
-\item week: number od weeks
-\item ind: Indicator on the ith patient.
+\item {t:} {survival time in days}
+\item {censured:} {censored = 0, dead = 1}
+\item {group:} {large tumor = 0, small tumor = 1}
 }
 }
 \usage{
 data(tumor)
 }
 \description{
-The data set described in Diggle et.al (2013) refers to an experiment in which 59 epileptic patients
-were randomly assigned to one of two treatment groups: treatment (progabide drug) and placebo groups.
-The number of seizures experienced by each patient during the baseline period (week eight) and the four consecutive
-periods (every two weeks) was recorded. The main goal of this application is to analyze the drug effect with
-respect to the placebo. Two dummies covariates are considered in this study; Group which assumes values equal
-to 1 if the patient belongs to treatment group and 0 otherwise, and Period which assumes values equal to 1 if the
-number of seizures are recorded during the treatment and 0 if are measured in the baseline period. It is taking
-into account the Time covariate which represents the number of weeks required for the counting of seizures in each
-patient of the placebo and treatment groups.
+Times (in days) of patients in ovarian cancer study
 }
 \examples{
 
@@ -36,7 +26,6 @@ head(tumor)
 
 }
 \references{
-Diggle, P. J., Liang, K. Y., and Zeger, S. L. (2013). Analysis of Longitudinal Data. Oxford
-University Press, N.Y., 2 edition.
+Colosimo, E.A . Análise de Sobrevivência Aplicada
 }
 \keyword{dataSets}
