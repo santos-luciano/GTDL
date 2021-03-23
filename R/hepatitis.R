@@ -17,8 +17,6 @@
 #' @references
 #' 
 #'Colosimo, E. A and  Giolo, S. R. Análise de sobrevivência aplicada.  Edgard Blucher: São Paulo. 2006.
-#'Gregory et al., 1975)
-#'
 #'
 #' @examples
 #'
