@@ -45,8 +45,6 @@
 #' yy <- as.matrix(cbind(y1,y2,y3,y4,y5))
 #' matplot(tt,yy,type="l",xlab="time",ylab="Hazard function",lty = 1:3,col=1:3,lwd=2)
 #' 
-NULL
-
 
 #'@rdname GTDL 
 #'@export
@@ -65,8 +63,6 @@ dGTDL<-function(t,param,log = FALSE){
     }
   }
 
-
-
 #'@rdname GTDL 
 #'@export
 hGTDL <- function(t,param){
@@ -78,8 +74,6 @@ hGTDL <- function(t,param){
   return(h1/h2)
 }
 
-
-
 #'@rdname GTDL 
 #'@export
 sGTDL <- function(t,param){
@@ -88,9 +82,6 @@ sGTDL <- function(t,param){
   gamma <- param[3]
   return(dGTDL(t,param)/hGTDL(t,param))
 }
-
-
-
 
 #'@rdname GTDL
 #'@export
