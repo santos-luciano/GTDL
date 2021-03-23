@@ -17,8 +17,8 @@
 #'
 #'@references
 #'
-#' Mackenzie, G. Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family. Journal of the Royal Statistical Society. 
-#' Series D (The Statistician),  v. 45, n. 1, p. 21-34. 1996.
+#' Mackenzie, G. (1996). Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family. Journal of the Royal Statistical Society. 
+#' Series D (The Statistician). (45). 21-34. 
 #'
 #'@examples
 #' 

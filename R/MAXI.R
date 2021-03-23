@@ -17,8 +17,8 @@ likeGTDL <- function(param,t){
 #'@references
 #'
 #' Aarset, M. V. (1987). How to Identify a Bathtub Hazard Rate. IEEE Transactions on Reliability, 36, 106–108.
-#' Mackenzie, G. (1996) Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family. Journal of the Royal Statistical Society. Series D (The Statistician), 
-#'  (45), 21-34.
+#' Mackenzie, G. (1996) Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family. Journal of the Royal Statistical Society. 
+#' Series D (The Statistician). (45). 21-34.
 #'
 #'@examples
 #' # times data (from Aarset, 1987))
