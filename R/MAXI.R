@@ -29,7 +29,7 @@ likeGTDL <- function(param,t){
 #'@rdname MaxGTDL
 #'@export
 MaxGTDL <- function(start,t,method = 'BFGS'){
-  op <- suppressWarnings(optim(par = start,fn = likeGTDL,method = metodo,t = t,hessian = TRUE))
+  op <- suppressWarnings(optim(par = start,fn = likeGTDL,method = method,t = t,hessian = TRUE))
   se <- sqrt(diag(solve(op$hessian)))
   z <- op$par/se
   pvalue <- 2 * (1 - stats::pnorm(abs(z)))
