@@ -28,10 +28,10 @@ like2 <- function(t,censur,para){
 
 #'@rdname max.GTDL
 #'@export
-maxGTDL <- function(start,t,censur){
+maxGTDL <- function(start,t,censur,method = "BFGS" ){
   
   op <- suppressWarnings(optim(par = start,fn = like2,
-                               method = "BFGS",t = t,censur = censur,hessian = TRUE))
+                               method = method,t = t,censur = censur,hessian = TRUE))
   se <- sqrt(diag(solve(op$hessian)))
   z <- op$par/se
   pvalue <- 2 * (1 - stats::pnorm(abs(z)))
