@@ -16,7 +16,7 @@ like2 <- function(t,censur,para){
 #'
 #'@references
 #'
-#'Colosimo, E. A; Giolo, S. R. Análise de sobrevivência aplicada. 1. ed. Blucher, 2006.
+#'Colosimo, E. A and  Giolo, S. R. Análise de sobrevivência aplicada.  Edgard Blucher: São Paulo. 2006.
 #'
 #'
 #'@example
