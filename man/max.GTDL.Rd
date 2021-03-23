@@ -5,7 +5,7 @@
 \alias{maxGTDL}
 \title{Maximum probability estimate of the GTDL package}
 \usage{
-maxGTDL(start, t, censur)
+maxGTDL(start, t, censur, method = "BFGS")
 }
 \arguments{
 \item{start}{vector of parameters to obtaind maximum likelihood.}
@@ -17,8 +17,14 @@ maxGTDL(start, t, censur)
 \description{
 Maximum probability estimate of the GTDL package
 }
+\examples{
+
+data(hepatis)
+maxparam <- max.GTDL(start = c(1,-0.05,-1),t = hepatitis$t, censur = hepatitis$censured)
+maxparam
+}
 \references{
-Colosimo, E. A; Giolo, S. R. Análise de sobrevivência aplicada. 1. ed. Blucher, 2006.
+Colosimo, E. A and  Giolo, S. R. Análise de sobrevivência aplicada.  Edgard Blucher: São Paulo. 2006.
 }
 \author{
 Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}

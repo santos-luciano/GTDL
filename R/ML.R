@@ -19,7 +19,7 @@ like2 <- function(t,censur,para){
 #'Colosimo, E. A and  Giolo, S. R. Análise de sobrevivência aplicada.  Edgard Blucher: São Paulo. 2006.
 #'
 #'
-#'@example
+#'@examples
 #'
 #'data(hepatis)
 #'maxparam <- max.GTDL(start = c(1,-0.05,-1),t = hepatitis$t, censur = hepatitis$censured)

@@ -22,3 +22,4 @@
 #' data(tumor)
 #' head(tumor)
 #'
+NULL

@@ -4,7 +4,7 @@
 \alias{MaxGTDL}
 \title{Maximum probability estimate of the GTDL package}
 \usage{
-MaxGTDL(start, t, ...)
+MaxGTDL(start, t, method = "BFGS")
 }
 \arguments{
 \item{start}{vector of parameters to obtaind maximum likelihood.}
@@ -12,19 +12,18 @@ MaxGTDL(start, t, ...)
 \item{t}{non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.}
 }
 \description{
-This is the main interface of the maxLik package and the function that performs the maximum probability estimate of the GTDL package
+The maximum likelihood estimation of the GTDL distribution
 }
 \examples{
-
 # times data (from Aarset, 1987))
-
 data(artset1987)
-mod <- MaxGTDL(c(1,-0.05,-1))
+mod <- MaxGTDL(c(1,-0.05,-1),t = artset1987)
 
 }
 \references{
-Aarset,M. V. How to identify bathtub hazard rate. IEEE transactions on reliability. Two full days, Washington, DC area, v. r-36, n. 1 1987.
-Mackenzie, G. Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family. Journal of the Royal Statistical Society. Series D (The Statistician),  v. 45, n. 1, p. 21-34. 1996.
+Aarset, M. V. (1987). How to Identify a Bathtub Hazard Rate. IEEE Transactions on Reliability, 36, 106–108.
+Mackenzie, G. (1996) Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family. Journal of the Royal Statistical Society.
+Series D (The Statistician). (45). 21-34.
 }
 \author{
 Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}

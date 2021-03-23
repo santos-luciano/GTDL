@@ -18,8 +18,10 @@
 #' 
 #'Colosimo, E. A and  Giolo, S. R. Análise de sobrevivência aplicada.  Edgard Blucher: São Paulo. 2006.
 #'
+#'
 #' @examples
 #'
 #' data(hepatitis)
 #' head(hepatitis)
 #'
+NULL

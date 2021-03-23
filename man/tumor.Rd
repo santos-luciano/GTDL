@@ -26,6 +26,6 @@ head(tumor)
 
 }
 \references{
-Colosimo, E.A . Análise de Sobrevivência Aplicada
+Colosimo, E. A and  Giolo, S. R. Análise de sobrevivência aplicada.  Edgard Blucher: São Paulo. 2006.
 }
 \keyword{dataSets}

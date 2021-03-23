@@ -59,7 +59,8 @@ matplot(tt,yy,type="l",xlab="time",ylab="Hazard function",lty = 1:3,col=1:3,lwd=
 
 }
 \references{
-Mackenzie, G. Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family. Journal of the Royal Statistical Society. Series D (The Statistician),  v. 45, n. 1, p. 21-34. 1996.
+Mackenzie, G. (1996). Regression Models for Survival Data: The Generalized Time-Dependent Logistic Family. Journal of the Royal Statistical Society.
+Series D (The Statistician). (45). 21-34.
 }
 \author{
 Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}
