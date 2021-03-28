@@ -1,7 +1,14 @@
-like2 <- function(t,censur,para){
-  l <- (hGTDL(t = t,param = para)^censur)*sGTDL(t = t,param = para)
-  ll <- sum(log(l))
-  return(-ll)  
+like2 <- function(t,censur,para,x){
+  p <- ncol(data.matrix(x))
+  x_ent <- data.matrix(x)
+  ll <- NULL
+  for(i in 1:length(x)){
+    gama_aux <- x_ent[i,]%*%matrix(para[3:(p+2)])  
+    para_aux <- c(para[1:2],gama_aux)  
+    l <- (hGTDL(t = t[i],param = para_aux)^censur[i])*sGTDL(t = t[i],param = para_aux)
+    ll[i] <- log(l)
+  }
+  return(-sum(ll))  
 }
 
 #'@name max.GTDL
@@ -28,10 +35,10 @@ like2 <- function(t,censur,para){
 
 #'@rdname max.GTDL
 #'@export
-maxGTDL <- function(start,t,censur,method = "BFGS" ){
+maxGTDL <- function(start,t,censur,x,method = "BFGS"){
   
   op <- suppressWarnings(optim(par = start,fn = like2,
-                               method = method,t = t,censur = censur,hessian = TRUE))
+                               method = method,t = t,x = x,censur = censur,hessian = TRUE))
   se <- sqrt(diag(solve(op$hessian)))
   z <- op$par/se
   pvalue <- 2 * (1 - stats::pnorm(abs(z)))
@@ -42,6 +49,3 @@ maxGTDL <- function(start,t,censur,method = "BFGS" ){
   return(mTab)
   
 }
-
-
-
