@@ -1,6 +1,6 @@
 like2 <- function(t,formula,censur,para){
-  t <- t
-  x <- model.matrix(formula)
+  x_aux <- model.matrix(formula)
+  x <- x_aux[,-1]
   p <- ncol(data.matrix(x))
   ll <- NULL
   for(i in 1:dim(x)[1]){
@@ -35,7 +35,7 @@ like2 <- function(t,formula,censur,para){
 #'names(lung)
 #'censur <- censured
 #'t <- time
-#'formula <- t~-1+factor(sex)+age
+#'formula <- ~age+sex
 #'censur <- ifelse(status==1,0,1)
 #'maxGTDL(start = c(1,-0.05,-1,-1,-2),formula  = formula,censur = censur)
 

@@ -25,7 +25,7 @@ attach(lung)
 names(lung)
 censur <- censured
 t <- time
-formula <- t~-1+factor(sex)+age
+formula <- ~age+sex
 censur <- ifelse(status==1,0,1)
 maxGTDL(start = c(1,-0.05,-1,-1,-2),formula  = formula,censur = censur)
 }
