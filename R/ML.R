@@ -1,9 +1,10 @@
-like2 <- function(t,censur,para,x){
+like2 <- function(t,formula,censur,para){
+  t <- t
+  x <- model.matrix(formula)
   p <- ncol(data.matrix(x))
-  x_ent <- data.matrix(x)
   ll <- NULL
-  for(i in 1:length(x)){
-    gama_aux <- x_ent[i,]%*%matrix(para[3:(p+2)])  
+  for(i in 1:dim(x)[1]){
+    gama_aux <- x[i,]%*%matrix(para[3:(p+2)])  
     para_aux <- c(para[1:2],gama_aux)  
     l <- (hGTDL(t = t[i],param = para_aux)^censur[i])*sGTDL(t = t[i],param = para_aux)
     ll[i] <- log(l)
@@ -28,17 +29,24 @@ like2 <- function(t,censur,para,x){
 #'
 #'@examples
 #'
-#'data(hepatis)
-#'maxparam <- max.GTDL(start = c(1,-0.05,-1),t = hepatitis$t, censur = hepatitis$censured)
-#'maxparam
+#'require(survival)
+#'data(lung)
+#'attach(lung)
+#'names(lung)
+#'censur <- censured
+#'t <- time
+#'formula <- t~-1+factor(sex)+age
+#'censur <- ifelse(status==1,0,1)
+#'maxGTDL(start = c(1,-0.05,-1,-1,-2),formula  = formula,censur = censur)
+
 
 
 #'@rdname max.GTDL
 #'@export
-maxGTDL <- function(start,t,censur,x,method = "BFGS"){
+maxGTDL <- function(t,start,formula,censur,method = "BFGS"){
   
-  op <- suppressWarnings(optim(par = start,fn = like2,
-                               method = method,t = t,x = x,censur = censur,hessian = TRUE))
+  op <- suppressWarnings(optim(par = start,fn = like2,t = t,
+                               method = method,formula = formula,censur = censur,hessian = TRUE))
   se <- sqrt(diag(solve(op$hessian)))
   z <- op$par/se
   pvalue <- 2 * (1 - stats::pnorm(abs(z)))

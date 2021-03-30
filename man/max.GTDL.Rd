@@ -5,12 +5,12 @@
 \alias{maxGTDL}
 \title{Maximum probability estimate of the GTDL package}
 \usage{
-maxGTDL(start, t, censur, method = "BFGS")
+maxGTDL(t, start, formula, censur, method = "BFGS")
 }
 \arguments{
-\item{start}{vector of parameters to obtaind maximum likelihood.}
-
 \item{t}{non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.}
+
+\item{start}{vector of parameters to obtaind maximum likelihood.}
 
 \item{censur}{non-negative random variable that represents whether the sample is censored or not.}
 }
@@ -19,9 +19,15 @@ Maximum probability estimate of the GTDL package
 }
 \examples{
 
-data(hepatis)
-maxparam <- max.GTDL(start = c(1,-0.05,-1),t = hepatitis$t, censur = hepatitis$censured)
-maxparam
+require(survival)
+data(lung)
+attach(lung)
+names(lung)
+censur <- censured
+t <- time
+formula <- t~-1+factor(sex)+age
+censur <- ifelse(status==1,0,1)
+maxGTDL(start = c(1,-0.05,-1,-1,-2),formula  = formula,censur = censur)
 }
 \references{
 Colosimo, E. A and  Giolo, S. R. Análise de sobrevivência aplicada.  Edgard Blucher: São Paulo. 2006.
