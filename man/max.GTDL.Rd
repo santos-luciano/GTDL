@@ -20,14 +20,14 @@ Maximum probability estimate of the GTDL package
 \examples{
 
 require(survival)
-data(lung)
-attach(lung)
-names(lung)
-censur <- censured
-t <- time
-formula <- ~age+sex
-censur <- ifelse(status==1,0,1)
-maxGTDL(start = c(1,-0.05,-1,-1,-2),formula  = formula,censur = censur)
+lung <- lung[-14,]
+lung$ph.ecog[lung$ph.ecog==3]<-2
+formula <- ~lung$sex+factor(lung$ph.ecog)+lung$age
+cesnur <- ifelse(lung$status==1,0,1)
+star <- c(0.03,0.05,-1,0.7,2,-0.1)
+maxGTDL(t = lung$time,start = start,
+                     formula = formula,
+                     censur = censur)
 }
 \references{
 Colosimo, E. A and  Giolo, S. R. Análise de sobrevivência aplicada.  Edgard Blucher: São Paulo. 2006.

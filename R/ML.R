@@ -30,23 +30,25 @@ like2 <- function(t,formula,censur,para){
 #'@examples
 #'
 #'require(survival)
-#'data(lung)
-#'attach(lung)
-#'names(lung)
-#'censur <- censured
-#'t <- time
-#'formula <- ~age+sex
-#'censur <- ifelse(status==1,0,1)
-#'maxGTDL(start = c(1,-0.05,-1,-1,-2),formula  = formula,censur = censur)
-
-
+#'lung <- lung[-14,]
+#'lung$ph.ecog[lung$ph.ecog==3]<-2
+#'formula <- ~lung$sex+factor(lung$ph.ecog)+lung$age
+#'cesnur <- ifelse(lung$status==1,0,1)
+#'star <- c(0.03,0.05,-1,0.7,2,-0.1)
+#'maxGTDL(t = lung$time,start = start,
+#'                      formula = formula,
+#'                      censur = censur)
 
 #'@rdname max.GTDL
 #'@export
 maxGTDL <- function(t,start,formula,censur,method = "BFGS"){
   
-  op <- suppressWarnings(optim(par = start,fn = like2,t = t,
-                               method = method,formula = formula,censur = censur,hessian = TRUE))
+  op <- suppressWarnings(optim(par = start,fn = like2,
+                               t = t,
+                               method = method,
+                               formula = formula,
+                               censur = censur,
+                               hessian = TRUE))
   se <- sqrt(diag(solve(op$hessian)))
   z <- op$par/se
   pvalue <- 2 * (1 - stats::pnorm(abs(z)))
