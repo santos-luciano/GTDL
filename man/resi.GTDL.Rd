@@ -6,7 +6,7 @@
 \alias{envelope.GTDL}
 \title{Residual value of the GTDL distribution}
 \usage{
-\method{quantile}{GTDL}(t, param, censura)
+\method{quantile}{GTDL}(t, formula, param, censura)
 
 envelope.GTDL(x)
 }

@@ -23,8 +23,8 @@ require(survival)
 lung <- lung[-14,]
 lung$ph.ecog[lung$ph.ecog==3]<-2
 formula <- ~lung$sex+factor(lung$ph.ecog)+lung$age
-cesnur <- ifelse(lung$status==1,0,1)
-star <- c(0.03,0.05,-1,0.7,2,-0.1)
+censur <- ifelse(lung$status==1,0,1)
+start <- c(0.03,0.05,-1,0.7,2,-0.1)
 maxGTDL(t = lung$time,start = start,
                      formula = formula,
                      censur = censur)

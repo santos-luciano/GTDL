@@ -26,8 +26,17 @@
 #'@rdname resi.GTDL
 #'@export
 
-quantile.GTDL <- function(t,param,censura){
-  conf <- dGTDL(t=t,param=param)
+quantile.GTDL <- function(t,formula,param,censura){
+  x.aux <- model.matrix(formula)
+  x <- x.aux[,-1]
+  p <- ncol(data.matrix(x))
+  conf <- NULL
+  for(i in 1:length(t)){
+    gamma.aux <-  x[i,]%*%matrix(param[3:(p+2)])
+    param.aux <- c(param[1:2],gamma.aux)
+    conf[i] <- dGTDL(t=t[i],param=param.aux)  
+  }
+  
   qr <- qnorm(censura* (1 - conf) + (1-censura)*runif(length(t),1-conf))
   return(qr)
 }
