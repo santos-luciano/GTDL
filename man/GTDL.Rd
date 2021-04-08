@@ -6,6 +6,7 @@
 \alias{hGTDL}
 \alias{sGTDL}
 \alias{rGTDL}
+\alias{reability.GTDL}
 \title{The Distribution GTDL}
 \usage{
 dGTDL(t, param, log = FALSE)
@@ -15,6 +16,8 @@ hGTDL(t, param)
 sGTDL(t, param)
 
 rGTDL(n, param)
+
+reability.GTDL(t, param)
 }
 \arguments{
 \item{t}{non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.}

@@ -94,3 +94,23 @@ rGTDL <- function(n,param){
   t <- (1/alpha)*(log((1+exp(gamma))*(1-u)^(-alpha/lambda)-1)-gamma)
   return(t)
 }
+
+#'@rdname GTDL
+#'@export
+
+
+reability.GTDL <- function(t,param){
+  
+  lambda <- param[1]
+  alpha <- param[2]
+  gamma <- param[3]
+  
+  func1 <- 1+exp(alpha*t+gamma)
+  func2 <- 1+exp(gamma)
+  pot <- -(lambda/alpha)
+  
+  R <- (func1/func2)^pot
+  
+  return(R)
+}
+

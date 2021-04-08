@@ -2,11 +2,11 @@
 % Please edit documentation in R/resiGTDL.R
 \name{resi.GTDL}
 \alias{resi.GTDL}
-\alias{quantile.GTDL}
+\alias{quantileGTDL}
 \alias{envelope.GTDL}
 \title{Residual value of the GTDL distribution}
 \usage{
-\method{quantile}{GTDL}(t, formula, param, censura)
+quantileGTDL(t, formula, param, censura)
 
 envelope.GTDL(x)
 }
