@@ -60,6 +60,7 @@ maxGTDL <- function(t,start,formula,censur,method = "BFGS"){
   mTab <- list( Lik = op$value,
                 Converged = op$convergence, Coefficients = TAB)
   rownames(mTab$Coefficients) <- c("lambda","alpha",paste0("beta ",c(1:(dim(mTab$Coefficients)[1]-2))))
+  mTab$Lik <- round(mTab$Lik,4)
   mTab$Coefficients <- round(mTab$Coefficients,4)
   return(mTab)
   
