@@ -37,7 +37,7 @@ MaxGTDL <- function(start,t,method = 'BFGS'){
                z.value = z, `Pr(>|z|)` = pvalue)
   mTab <- list( Lik = op$value,
                 Converged = op$convergence, Coefficients = TAB)
-  rownames(mTab$Coefficients) <- c("lambda","alpha","gamma")
+  rownames(mTab$Coefficients) <- c("lambda","alpha","beta")
   return(mTab)
 }
 

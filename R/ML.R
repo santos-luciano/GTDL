@@ -1,15 +1,10 @@
 like2 <- function(t,formula,censur,para){
-  
   x_aux <- model.matrix(formula)
-  x <- x_aux[,-1]
+  x <- matrix(x_aux[,-1],ncol = (ncol(x_aux)-1))
   p <- ncol(data.matrix(x))
   ll <- NULL
   for(i in 1:dim(x)[1]){
-    if(dim(x_aux)[2]<2){
-      gama_aux <- x[i]%*%matrix(para[3:(p+2)])
-    }
-    else{
-      gama_aux <- x[i,]%*%matrix(para[3:(p+2)]) } 
+    gama_aux <- x[i,]%*%matrix(para[3:(p+2)])
     para_aux <- c(para[1:2],gama_aux)  
     l <- (hGTDL(t = t[i],param = para_aux)^censur[i])*sGTDL(t = t[i],param = para_aux)
     ll[i] <- log(l)
@@ -46,22 +41,26 @@ like2 <- function(t,formula,censur,para){
 
 #'@rdname max.GTDL
 #'@export
+
+
+
 maxGTDL <- function(t,start,formula,censur,method = "BFGS"){
-  
-  op <- suppressWarnings(optim(par = start,fn = like2,
+ 
+   op <- suppressWarnings(optim(par = start,fn = like2,
                                t = t,
                                method = method,
                                formula = formula,
                                censur = censur,
                                hessian = TRUE))
-  se <- suppressWarnings(sqrt(diag(solve(op$hessian))))
+  se <- sqrt(diag(solve(op$hessian)))
   z <- op$par/se
   pvalue <- 2 * (1 - stats::pnorm(abs(z)))
   TAB <- cbind(Estimate = op$par, Std.Error = se,
                z.value = z, `Pr(>|z|)` = pvalue)
   mTab <- list( Lik = op$value,
                 Converged = op$convergence, Coefficients = TAB)
-  rownames(mTab$Coefficients) <- c("lambda","alpha",paste0("gamma ",c(1:(dim(mTab$Coefficients)[1]-2))))
+  rownames(mTab$Coefficients) <- c("lambda","alpha",paste0("beta ",c(1:(dim(mTab$Coefficients)[1]-2))))
+  mTab$Coefficients <- round(mTab$Coefficients,4)
   return(mTab)
   
 }
