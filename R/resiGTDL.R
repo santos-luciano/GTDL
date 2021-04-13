@@ -27,7 +27,7 @@
 #'fit.model <- maxGTDL(t = lung$time,start = start,
 #'            formula = formula,
 #'            censur = censur)
-#'x <- quantile.GTDL(t = lung$time,formula = formula ,param = fit.model$Coefficients[,1],
+#'r <- quantile.GTDL(t = lung$time,formula = formula ,param = fit.model$Coefficients[,1],
 #'              censura = censur)
 #'envelope.GTDL(x)
 
