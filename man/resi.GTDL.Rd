@@ -28,7 +28,7 @@ lung$ph.ecog[lung$ph.ecog==3]<-2
 formula <- ~lung$sex+factor(lung$ph.ecog)+lung$age
 censur <- ifelse(lung$status==1,0,1)
 start <- c(0.03,0.05,-1,0.7,2,-0.1)
-fit.model <- maxGTDL(t = lung$time,start = start,
+fit.model <- mle2.GTDL(t = lung$time,start = start,
            formula = formula,
            censur = censur)
 r <- quantile.GTDL(t = lung$time,formula = formula ,param = fit.model$Coefficients[,1],

@@ -26,26 +26,23 @@ like2 <- function(t,formula,censur,para){
 #'
 #'Colosimo, E. A and  Giolo, S. R. Análise de sobrevivência aplicada.  Edgard Blucher: São Paulo. 2006.
 #'
-#'
 #'@examples
-#'?
+#'
 #'require(survival)
 #'lung <- lung[-14,]
 #'lung$ph.ecog[lung$ph.ecog==3]<-2
 #'formula <- ~lung$sex+factor(lung$ph.ecog)+lung$age
 #'censur <- ifelse(lung$status==1,0,1)
 #'start <- c(0.03,0.05,-1,0.7,2,-0.1)
-#'maxGTDL(t = lung$time,start = start,
+#'fit.model <- mle2.GTDL(t = lung$time,start = start,
 #'                      formula = formula,
 #'                      censur = censur)
-
+#'fit.model
+#'
 #'@rdname max.GTDL
 #'@export
 
-
-
-maxGTDL <- function(t,start,formula,censur,method = "BFGS"){
- 
+mle2.GTDL <- function(t,start,formula,censur,method = "BFGS"){
    op <- suppressWarnings(optim(par = start,fn = like2,
                                t = t,
                                method = method,

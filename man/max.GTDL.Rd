@@ -2,10 +2,10 @@
 % Please edit documentation in R/ML.R
 \name{max.GTDL}
 \alias{max.GTDL}
-\alias{maxGTDL}
+\alias{mle2.GTDL}
 \title{Maximum probability estimate of the GTDL package}
 \usage{
-maxGTDL(t, start, formula, censur, method = "BFGS")
+mle2.GTDL(t, start, formula, censur, method = "BFGS")
 }
 \arguments{
 \item{t}{non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.}
@@ -18,16 +18,18 @@ maxGTDL(t, start, formula, censur, method = "BFGS")
 Maximum probability estimate of the GTDL package
 }
 \examples{
-?
+
 require(survival)
 lung <- lung[-14,]
 lung$ph.ecog[lung$ph.ecog==3]<-2
 formula <- ~lung$sex+factor(lung$ph.ecog)+lung$age
 censur <- ifelse(lung$status==1,0,1)
 start <- c(0.03,0.05,-1,0.7,2,-0.1)
-maxGTDL(t = lung$time,start = start,
+fit.model <- mle2.GTDL(t = lung$time,start = start,
                      formula = formula,
                      censur = censur)
+fit.model
+
 }
 \references{
 Colosimo, E. A and  Giolo, S. R. Análise de sobrevivência aplicada.  Edgard Blucher: São Paulo. 2006.
