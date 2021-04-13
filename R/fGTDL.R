@@ -1,4 +1,4 @@
-#'@name fGTDL
+#'@name GTDL
 #'@title The Distribution GTDL
 #'
 #'@description Density, survival function, failure function and random generation for the GTDL distribution.
@@ -46,7 +46,7 @@
 #' matplot(tt,yy,type="l",xlab="time",ylab="Hazard function",lty = 1:3,col=1:3,lwd=2)
 #' 
 
-#'@rdname fGTDL 
+#'@rdname GTDL 
 #'@export
 dGTDL<-function(t,param,log = FALSE){
   lambda <- param[1]
@@ -63,7 +63,7 @@ dGTDL<-function(t,param,log = FALSE){
     }
   }
 
-#'@rdname fGTDL 
+#'@rdname GTDL 
 #'@export
 hGTDL <- function(t,param){
   lambda <- param[1]
@@ -74,7 +74,7 @@ hGTDL <- function(t,param){
   return(h1/h2)
 }
 
-#'@rdname fGTDL 
+#'@rdname GTDL 
 #'@export
 sGTDL <- function(t,param){
   lambda <- param[1]
@@ -83,7 +83,7 @@ sGTDL <- function(t,param){
   return(dGTDL(t,param)/hGTDL(t,param))
 }
 
-#'@rdname fGTDL
+#'@rdname GTDL
 #'@export
 
 rGTDL <- function(n,param){
@@ -95,7 +95,7 @@ rGTDL <- function(n,param){
   return(t)
 }
 
-#'@rdname fGTDL
+#'@rdname GTDL
 #'@export
 
 

@@ -1,4 +1,34 @@
-#'@name resiGTDL
+envelope.GTDL <- function(x){
+  U	         <- x
+  n	         <- length(x)
+  d2s 	     <- sort(U)
+  xq2 	     <- qnorm(ppoints(n))
+  Xsim 	     <- matrix(0, 100, n)
+  for(i in 1:100){
+    u2       <- rnorm(n)
+    Xsim[i,] <- u2
+  }
+  Xsim2      <- apply(Xsim, 1, sort)
+  d21        <- matrix(0, n, 1)
+  d22        <- matrix(0, n, 1)
+  for(i in 1:n){
+    d21[i]  <- quantile(Xsim2[i,], 0.025)
+    d22[i]  <- quantile(Xsim2[i,], 0.975)
+  }
+  d2med      <- apply(Xsim2, 1, mean)
+  fy         <- range(d2s, d21, d22)
+  plot(xq2, d2s, xlab = quote("Theoretical Quantiles"),
+       ylab = quote("Quantile Residuals"), 
+       pch = 20, ylim = fy)
+  par(new = T)
+  plot(xq2, d21, type = "l", ylim = fy, xlab = "", ylab = "", lwd=1.2)
+  par(new = T)
+  plot(xq2, d2med, type = "l", ylim = fy, xlab = "", ylab = "", lwd=2)
+  par(new = T)
+  plot(xq2, d22, type = "l", ylim = fy, xlab = "", ylab = "", lwd=1.2)
+}
+
+#'@name quantile.GTDL
 #'@title Residual value of the GTDL distribution 
 #'
 #'
@@ -31,7 +61,7 @@
 #'              censura = censur)
 #'envelope.GTDL(x)
 
-#'@rdname resi.GTDL
+#'@rdname quantile.GTDL
 #'@export
 
 quantile.GTDL <- function(t,formula,param,censura){
@@ -49,38 +79,3 @@ quantile.GTDL <- function(t,formula,param,censura){
   plot(r)
   return(qr)
 }
-
-
-#'@rdname resiGTDL
-#'@export
-
-envelope.GTDL <- function(x){
-  U	         <- x
-  n	         <- length(x)
-  d2s 	     <- sort(U)
-  xq2 	     <- qnorm(ppoints(n))
-  Xsim 	     <- matrix(0, 100, n)
-  for(i in 1:100){
-    u2       <- rnorm(n)
-    Xsim[i,] <- u2
-  }
-  Xsim2      <- apply(Xsim, 1, sort)
-  d21        <- matrix(0, n, 1)
-  d22        <- matrix(0, n, 1)
-  for(i in 1:n){
-    d21[i]  <- quantile(Xsim2[i,], 0.025)
-    d22[i]  <- quantile(Xsim2[i,], 0.975)
-  }
-  d2med      <- apply(Xsim2, 1, mean)
-  fy         <- range(d2s, d21, d22)
-  plot(xq2, d2s, xlab = quote("Theoretical Quantiles"),
-       ylab = quote("Quantile Residuals"), 
-       pch = 20, ylim = fy)
-  par(new = T)
-  plot(xq2, d21, type = "l", ylim = fy, xlab = "", ylab = "", lwd=1.2)
-  par(new = T)
-  plot(xq2, d2med, type = "l", ylim = fy, xlab = "", ylab = "", lwd=2)
-  par(new = T)
-  plot(xq2, d22, type = "l", ylim = fy, xlab = "", ylab = "", lwd=1.2)
-}
-

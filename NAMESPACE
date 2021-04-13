@@ -2,7 +2,6 @@
 
 S3method(quantile,GTDL)
 export(dGTDL)
-export(envelope.GTDL)
 export(hGTDL)
 export(mle.GTDL)
 export(mle2.GTDL)
