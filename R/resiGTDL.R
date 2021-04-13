@@ -24,17 +24,17 @@
 #'formula <- ~lung$sex+factor(lung$ph.ecog)+lung$age
 #'censur <- ifelse(lung$status==1,0,1)
 #'start <- c(0.03,0.05,-1,0.7,2,-0.1)
-#'max_para <- maxGTDL(t = lung$time,start = start,
+#'fit.model <- maxGTDL(t = lung$time,start = start,
 #'            formula = formula,
 #'            censur = censur)
-#'x <- quantile.GTDL(t = lung$time,param = max_para$Coefficients[,1],
+#'x <- quantile.GTDL(t = lung$time,formula = formula ,param = fit.model$Coefficients[,1],
 #'              censura = censur)
-#'envole.GTDL(x)
+#'envelope.GTDL(x)
 
 #'@rdname resi.GTDL
 #'@export
 
-quantileGTDL <- function(t,formula,param,censura){
+quantile.GTDL <- function(t,formula,param,censura){
   x.aux <- model.matrix(formula)
   x <- x.aux[,-1]
   p <- ncol(data.matrix(x))

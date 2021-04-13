@@ -18,7 +18,7 @@ maxGTDL(t, start, formula, censur, method = "BFGS")
 Maximum probability estimate of the GTDL package
 }
 \examples{
-
+?
 require(survival)
 lung <- lung[-14,]
 lung$ph.ecog[lung$ph.ecog==3]<-2

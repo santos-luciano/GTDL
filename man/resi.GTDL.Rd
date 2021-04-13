@@ -2,11 +2,11 @@
 % Please edit documentation in R/resiGTDL.R
 \name{resi.GTDL}
 \alias{resi.GTDL}
-\alias{quantileGTDL}
+\alias{quantile.GTDL}
 \alias{envelope.GTDL}
 \title{Residual value of the GTDL distribution}
 \usage{
-quantileGTDL(t, formula, param, censura)
+\method{quantile}{GTDL}(t, formula, param, censura)
 
 envelope.GTDL(x)
 }
@@ -23,17 +23,17 @@ Residual value of the GTDL distribution
 \examples{
 
 data(lung)
-lung <- lung[-c(14,15),]
+lung <- lung[-14,]
 lung$ph.ecog[lung$ph.ecog==3]<-2
 formula <- ~lung$sex+factor(lung$ph.ecog)+lung$age
 censur <- ifelse(lung$status==1,0,1)
 start <- c(0.03,0.05,-1,0.7,2,-0.1)
-max_para <- maxGTDL(t = lung$time,start = start,
+fit.model <- maxGTDL(t = lung$time,start = start,
            formula = formula,
            censur = censur)
-x <- quantile.GTDL(t = lung$time,param = max_para$Coefficients[,1],
+x <- quantile.GTDL(t = lung$time,formula = formula ,param = fit.model$Coefficients[,1],
              censura = censur)
-envole.GTDL(x)
+envelope.GTDL(x)
 }
 \author{
 Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}
