@@ -1,4 +1,4 @@
-likeGTDL <- function(param,t){ 
+like1 <- function(param,t){ 
   f1 <- sum(dGTDL(param = param,t = t,log = TRUE))
   return(-f1)
 }
@@ -23,12 +23,11 @@ likeGTDL <- function(param,t){
 #'@examples
 #' # times data (from Aarset, 1987))
 #'data(artset1987)
-#'mod <- MaxGTDL(c(1,-0.05,-1),t = artset1987)
+#'mod <- mle.GTDL(c(1,-0.05,-1),t = artset1987)
 #'
-
-#'@rdname MaxGTDL
+#'@rdname mle.GTDL
 #'@export
-MaxGTDL <- function(start,t,method = 'BFGS'){
+mle.GTDL <- function(start,t,method = 'BFGS'){
   op <- suppressWarnings(optim(par = start,fn = likeGTDL,method = method,t = t,hessian = TRUE))
   se <- sqrt(diag(solve(op$hessian)))
   z <- op$par/se
@@ -38,6 +37,7 @@ MaxGTDL <- function(start,t,method = 'BFGS'){
   mTab <- list( Lik = op$value,
                 Converged = op$convergence, Coefficients = TAB)
   rownames(mTab$Coefficients) <- c("lambda","alpha","beta")
+  mTab$Coefficients <- round(mTab$Coefficients,4)
   return(mTab)
 }
 
