@@ -28,7 +28,7 @@ like2 <- function(t,formula,censur,para){
 #'
 #'
 #'@examples
-#'
+#'?
 #'require(survival)
 #'lung <- lung[-14,]
 #'lung$ph.ecog[lung$ph.ecog==3]<-2

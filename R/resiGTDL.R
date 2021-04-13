@@ -19,7 +19,7 @@
 #'@examples
 #'
 #'data(lung)
-#'lung <- lung[-c(14,15),]
+#'lung <- lung[-14,]
 #'lung$ph.ecog[lung$ph.ecog==3]<-2
 #'formula <- ~lung$sex+factor(lung$ph.ecog)+lung$age
 #'censur <- ifelse(lung$status==1,0,1)
