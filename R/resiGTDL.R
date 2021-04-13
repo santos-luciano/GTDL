@@ -1,4 +1,4 @@
-#'@name resi.GTDL
+#'@name resiGTDL
 #'@title Residual value of the GTDL distribution 
 #'
 #'
@@ -51,7 +51,7 @@ quantile.GTDL <- function(t,formula,param,censura){
 }
 
 
-#'@rdname resi.GTDL
+#'@rdname resiGTDL
 #'@export
 
 envelope.GTDL <- function(x){

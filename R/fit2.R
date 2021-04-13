@@ -12,7 +12,7 @@ like2 <- function(t,formula,censur,para){
   return(-sum(ll))  
 }
 
-#'@name max.GTDL
+#'@name fit2
 #'@title Maximum probability estimate of the GTDL package
 #'
 #'@param start vector of parameters to obtaind maximum likelihood.
@@ -39,7 +39,7 @@ like2 <- function(t,formula,censur,para){
 #'                      censur = censur)
 #'fit.model
 #'
-#'@rdname max.GTDL
+#'@rdname fit2
 #'@export
 
 mle2.GTDL <- function(t,start,formula,censur,method = "BFGS"){
