@@ -83,7 +83,7 @@ sGTDL <- function(t,param){
   return(dGTDL(t,param)/hGTDL(t,param))
 }
 
-#'@rdname GTDL
+#'@rdname fGTDL
 #'@export
 
 rGTDL <- function(n,param){

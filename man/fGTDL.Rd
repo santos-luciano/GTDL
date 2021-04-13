@@ -5,6 +5,7 @@
 \alias{dGTDL}
 \alias{hGTDL}
 \alias{sGTDL}
+\alias{rGTDL}
 \alias{reability.GTDL}
 \title{The Distribution GTDL}
 \usage{
@@ -14,6 +15,8 @@ hGTDL(t, param)
 
 sGTDL(t, param)
 
+rGTDL(n, param)
+
 reability.GTDL(t, param)
 }
 \arguments{
@@ -21,11 +24,11 @@ reability.GTDL(t, param)
 
 \item{log}{logical; if TRUE, probabilities p are given as log(p).}
 
+\item{n}{number of observations. If length(n) > 1, the length is taken to be the number required.}
+
 \item{alpha, gamma}{scalars.}
 
 \item{lambda}{non-negative.}
-
-\item{n}{number of observations. If length(n) > 1, the length is taken to be the number required.}
 
 \item{pcensura}{sample censorship rate}
 }
