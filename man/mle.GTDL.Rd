@@ -2,9 +2,10 @@
 % Please edit documentation in R/MAXI.R
 \name{MaxGTDL}
 \alias{MaxGTDL}
+\alias{mle.GTDL}
 \title{Maximum probability estimate of the GTDL package}
 \usage{
-MaxGTDL(start, t, method = "BFGS")
+mle.GTDL(start, t, method = "BFGS")
 }
 \arguments{
 \item{start}{vector of parameters to obtaind maximum likelihood.}
@@ -17,7 +18,7 @@ The maximum likelihood estimation of the GTDL distribution
 \examples{
 # times data (from Aarset, 1987))
 data(artset1987)
-mod <- MaxGTDL(c(1,-0.05,-1),t = artset1987)
+mod <- mle.GTDL(c(1,-0.05,-1),t = artset1987)
 
 }
 \references{
