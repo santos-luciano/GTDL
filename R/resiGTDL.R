@@ -52,7 +52,7 @@ envelope.GTDL <- function(x){
 #'fit.model <- mle2.GTDL(t = lung$time,start = start,
 #'            formula = formula,
 #'            censur = censur)
-#'r <- quantile.GTDL(t = lung$time,formula = formula ,param = fit.model$Coefficients[,1],
+#'r <- q.GTDL(t = lung$time,formula = formula ,param = fit.model$Coefficients[,1],
 #'              censura = censur)
 #'envelope.GTDL(x)
 

@@ -27,7 +27,7 @@ start <- c(0.03,0.05,-1,0.7,2,-0.1)
 fit.model <- mle2.GTDL(t = lung$time,start = start,
            formula = formula,
            censur = censur)
-r <- quantile.GTDL(t = lung$time,formula = formula ,param = fit.model$Coefficients[,1],
+r <- q.GTDL(t = lung$time,formula = formula ,param = fit.model$Coefficients[,1],
              censura = censur)
 envelope.GTDL(x)
 }
