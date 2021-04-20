@@ -54,7 +54,7 @@ envelope.GTDL <- function(x){
 #'            censur = censur)
 #'r <- q.GTDL(t = lung$time,formula = formula ,param = fit.model$Coefficients[,1],
 #'              censura = censur)
-#'envelope.GTDL(r)
+#'r
 
 #'@rdname resiGTDL
 #'@export
@@ -71,7 +71,9 @@ q.GTDL <- function(t,formula,param,censura){
   }
   
   qr <- qnorm(censura* (1 - conf) + (1-censura)*runif(length(t),1-conf))
+  par(mrow=c(1,2))
   plot(qr)
+  envelope.GTDL(qr)
   return(qr)
 }
 
