@@ -3,7 +3,6 @@ like1 <- function(param,t){
   return(-f1)
 }
 
-#'@name mle.GTDL
 #'@title Maximum probability estimate of the GTDL package
 #'
 #'@description The maximum likelihood estimation of the GTDL distribution
@@ -25,10 +24,10 @@ like1 <- function(param,t){
 #'data(artset1987)
 #'mod <- mle.GTDL(c(1,-0.05,-1),t = artset1987)
 #'
-#'@rdname mle.GTDL
+#'@rdname fit1
 #'@export
 mle.GTDL <- function(start,t,method = 'BFGS'){
-  op <- suppressWarnings(optim(par = start,fn = likeGTDL,method = method,t = t,hessian = TRUE))
+  op <- suppressWarnings(optim(par = start,fn = like1,method = method,t = t,hessian = TRUE))
   se <- sqrt(diag(solve(op$hessian)))
   z <- op$par/se
   pvalue <- 2 * (1 - stats::pnorm(abs(z)))

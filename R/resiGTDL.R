@@ -28,19 +28,14 @@ envelope.GTDL <- function(x){
   plot(xq2, d22, type = "l", ylim = fy, xlab = "", ylab = "", lwd=1.2)
 }
 
-#'@name quantile.GTDL
 #'@title Residual value of the GTDL distribution 
 #'
 #'
 #'@param t non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.
 #'@param param These are the lambda, alpha and gamma parameters of the GTDL distribution.
 #'@param censura absence of the occurrence of the event at the time of analysis.
-
 #'
-#'@describe
-#'
-#'
-#'
+#'@describe TESTE
 #'
 #'@author Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}
 #'@author Luciano S. Santos \email{lucianno0800@gmail.com}
@@ -61,7 +56,7 @@ envelope.GTDL <- function(x){
 #'              censura = censur)
 #'envelope.GTDL(x)
 
-#'@rdname quantile.GTDL
+#'@rdname resiGTDL
 #'@export
 
 quantile.GTDL <- function(t,formula,param,censura){
@@ -79,3 +74,5 @@ quantile.GTDL <- function(t,formula,param,censura){
   plot(r)
   return(qr)
 }
+
+
