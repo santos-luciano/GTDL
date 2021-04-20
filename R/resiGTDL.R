@@ -59,7 +59,7 @@ envelope.GTDL <- function(x){
 #'@rdname resiGTDL
 #'@export
 
-quantile.GTDL <- function(t,formula,param,censura){
+q.GTDL <- function(t,formula,param,censura){
   x.aux <- model.matrix(formula)
   x <- x.aux[,-1]
   p <- ncol(data.matrix(x))

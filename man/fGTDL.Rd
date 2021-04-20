@@ -25,8 +25,6 @@ reability.GTDL(t, param)
 \item{alpha, gamma}{scalars.}
 
 \item{lambda}{non-negative.}
-
-\item{pcensura}{sample censorship rate}
 }
 \description{
 Density, survival function, failure function and random generation for the GTDL distribution.
