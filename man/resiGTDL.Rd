@@ -9,6 +9,8 @@ q.GTDL(t, formula, param, censura)
 \arguments{
 \item{t}{non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.}
 
+\item{formula}{The structure matrix of covariates of dimension n x p}
+
 \item{param}{These are the lambda, alpha and gamma parameters of the GTDL distribution.}
 
 \item{censura}{absence of the occurrence of the event at the time of analysis.}

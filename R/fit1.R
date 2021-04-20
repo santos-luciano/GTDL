@@ -9,7 +9,7 @@ like1 <- function(param,t){
 #'
 #'@param start vector of parameters to obtaind maximum likelihood.
 #'@param t non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.
-#'
+#'@param method The method to be used
 #'@author Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}
 #'@author Luciano S. Santos \email{lucianno0800@gmail.com}
 #'
@@ -26,6 +26,7 @@ like1 <- function(param,t){
 #'
 #'@rdname fit1
 #'@export
+#'@import stats
 mle.GTDL <- function(start,t,method = 'BFGS'){
   op <- suppressWarnings(optim(par = start,fn = like1,method = method,t = t,hessian = TRUE))
   se <- sqrt(diag(solve(op$hessian)))

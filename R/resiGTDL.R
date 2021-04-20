@@ -34,7 +34,7 @@ envelope.GTDL <- function(x){
 #'@param t non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.
 #'@param param These are the lambda, alpha and gamma parameters of the GTDL distribution.
 #'@param censura absence of the occurrence of the event at the time of analysis.
-#'
+#'@param formula The structure matrix of covariates of dimension n x p
 #'@describe TESTE
 #'
 #'@author Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}
@@ -58,6 +58,8 @@ envelope.GTDL <- function(x){
 
 #'@rdname resiGTDL
 #'@export
+#'@import stats
+#'@import graphics
 
 q.GTDL <- function(t,formula,param,censura){
   x.aux <- model.matrix(formula)
@@ -71,8 +73,12 @@ q.GTDL <- function(t,formula,param,censura){
   }
   
   qr <- qnorm(censura* (1 - conf) + (1-censura)*runif(length(t),1-conf))
-  par(mrow=c(1,2))
-  plot(qr)
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar))
+  graphics::par(mfrow = c(1, 2), pty = "s", col = "royalblue")
+  plot(qr, xlab = "Index", ylab = "Quantile residuals",
+       pch = 15, main = "", cex.axis = 1.2,
+       cex.lab = 1.2, cex = 0.6, bg = 5)
   envelope.GTDL(qr)
   return(qr)
 }

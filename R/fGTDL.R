@@ -3,8 +3,7 @@
 #'@description Density, survival function, failure function and random generation for the GTDL distribution.
 #'
 #'@param t non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.
-#'@param alpha,gamma scalars.
-#'@param lambda non-negative.
+#'@param param parameters(alpha and gamma are scalars, lambda non-negative)
 #'@param n number of observations. If length(n) > 1, the length is taken to be the number required.
 #'@param log logical; if TRUE, probabilities p are given as log(p).
 #'
@@ -61,8 +60,9 @@ dGTDL<-function(t,param,log = FALSE){
     }
   }
 
- 
+#'@rdname fGTDL 
 #'@export
+
 hGTDL <- function(t,param){
   lambda <- param[1]
   alpha <- param[2]

@@ -10,6 +10,8 @@ mle.GTDL(start, t, method = "BFGS")
 \item{start}{vector of parameters to obtaind maximum likelihood.}
 
 \item{t}{non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.}
+
+\item{method}{The method to be used}
 }
 \description{
 The maximum likelihood estimation of the GTDL distribution

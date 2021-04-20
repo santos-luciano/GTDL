@@ -2,12 +2,15 @@
 % Please edit documentation in R/fGTDL.R
 \name{dGTDL}
 \alias{dGTDL}
+\alias{hGTDL}
 \alias{sGTDL}
 \alias{rGTDL}
 \alias{reability.GTDL}
 \title{The Distribution GTDL}
 \usage{
 dGTDL(t, param, log = FALSE)
+
+hGTDL(t, param)
 
 sGTDL(t, param)
 
@@ -18,13 +21,11 @@ reability.GTDL(t, param)
 \arguments{
 \item{t}{non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.}
 
+\item{param}{parameters(alpha and gamma are scalars, lambda non-negative)}
+
 \item{log}{logical; if TRUE, probabilities p are given as log(p).}
 
 \item{n}{number of observations. If length(n) > 1, the length is taken to be the number required.}
-
-\item{alpha, gamma}{scalars.}
-
-\item{lambda}{non-negative.}
 }
 \description{
 Density, survival function, failure function and random generation for the GTDL distribution.

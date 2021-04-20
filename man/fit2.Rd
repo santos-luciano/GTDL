@@ -11,7 +11,11 @@ mle2.GTDL(t, start, formula, censur, method = "BFGS")
 
 \item{start}{vector of parameters to obtaind maximum likelihood.}
 
+\item{formula}{The structure matrix of covariates of dimension n x p}
+
 \item{censur}{non-negative random variable that represents whether the sample is censored or not.}
+
+\item{method}{The method to be used}
 }
 \description{
 Maximum probability estimate of the GTDL package

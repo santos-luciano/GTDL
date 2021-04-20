@@ -17,7 +17,8 @@ like2 <- function(t,formula,censur,para){
 #'@param start vector of parameters to obtaind maximum likelihood.
 #'@param t non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.
 #'@param censur non-negative random variable that represents whether the sample is censored or not.
-#'
+#'@param formula The structure matrix of covariates of dimension n x p
+#'@param method The method to be used
 #'@author Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}
 #'@author Luciano S. Santos \email{lucianno0800@gmail.com}
 #'
@@ -40,7 +41,7 @@ like2 <- function(t,formula,censur,para){
 #'
 #'@rdname fit2
 #'@export
-
+#'@import stats
 mle2.GTDL <- function(t,start,formula,censur,method = "BFGS"){
    op <- suppressWarnings(optim(par = start,fn = like2,
                                t = t,
