@@ -11,6 +11,10 @@ Authors@R:
           family = "Carrasco",
           role = c("aut","cre"),
           email = "carrascojalmar@gmail.com")
+    person(given = "Lizandra",
+          family = "Fabio",
+          role = c("aut","cre"),
+          email = "lizandrafabio@gmail.com")
 Maintainer: Jalmar M F Carrasco <carrascojalmar@gmail.com>
 Description: What the package does (one paragraph).
 License: GPL (>=3)
