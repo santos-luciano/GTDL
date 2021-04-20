@@ -29,7 +29,7 @@ fit.model <- mle2.GTDL(t = lung$time,start = start,
            censur = censur)
 r <- q.GTDL(t = lung$time,formula = formula ,param = fit.model$Coefficients[,1],
              censura = censur)
-envelope.GTDL(x)
+envelope.GTDL(r)
 }
 \author{
 Jalmar M. F. Carrasco \email{carrascojalmar@gmail.com}
