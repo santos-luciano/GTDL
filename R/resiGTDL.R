@@ -46,15 +46,30 @@ envelope.GTDL <- function(x){
 #'data(lung)
 #'lung <- lung[-14,]
 #'lung$ph.ecog[lung$ph.ecog==3]<-2
-#'formula <- ~lung$sex+factor(lung$ph.ecog)+lung$age
-#'censur <- ifelse(lung$status==1,0,1)
-#'start <- c(0.03,0.05,-1,0.7,2,-0.1)
-#'fit.model <- mle2.GTDL(t = lung$time,start = start,
-#'            formula = formula,
-#'            censur = censur)
-#'r <- q.GTDL(t = lung$time,formula = formula ,param = fit.model$Coefficients[,1],
-#'              censura = censur)
-#'r
+#'t1 <- lung$time
+#'formula1 <- ~lung$sex+factor(lung$ph.ecog)+lung$age
+#'censur1 <- ifelse(lung$status==1,0,1)
+#'start1 <- c(0.03,0.05,-1,0.7,2,-0.1)
+#'fit.model1 <- mle2.GTDL(t = t1,start = start1,
+#'            formula = formula1,
+#'            censur = censur1)
+#'r1 <- q.GTDL(t = t1,formula = formula1 ,param = fit.model1$Coefficients[,1],
+#'              censura = censur1)
+#'r1
+#'
+#'
+#'data(tumor)
+#'t2 <- tumor$t
+#'formula2 <- ~tumor$group
+#'censur2 <- tumor$censured
+#'start2 <- c(1,-0.05,1.7)
+#'fit.model2 <- mle2.GTDL(t = t2,start = start2,
+#'                        formula = formula2,
+#'                        censur = censur2)
+#'r2 <- q.GTDL(t = t2,formula = formula2, param = fit.model2$Coefficients[,1],
+#'             censur = censur2)
+#'r2
+
 
 #'@rdname resiGTDL
 #'@export
@@ -63,7 +78,7 @@ envelope.GTDL <- function(x){
 
 q.GTDL <- function(t,formula,param,censura){
   x.aux <- model.matrix(formula)
-  x <- x.aux[,-1]
+  x <- matrix(x.aux[,-1],ncol = (ncol(x.aux)-1))
   p <- ncol(data.matrix(x))
   conf <- NULL
   for(i in 1:length(t)){
