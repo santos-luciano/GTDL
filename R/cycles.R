@@ -8,13 +8,13 @@
 #' @usage data(cycles)
 #' @format This data frame contains the following columns:
 #' \itemize{
-#' \item {t:} {survival time in days}
+#' \item {t:} {Cycles to failure {in units of 10^3 cycles) of springs}
+#' \item {censured:} {censored = 0, failure = 1}
+#' \item {group:} {Stress {N/mm^2) of springs}
 #' }
 #' @references
 #' 
-#'Loprinzi CL. Laurie JA. Wieand HS. Krook JE. Novotny PJ.Kugler JW. Bartel J. Law M. Bateman M. Klatt NE. 
-#'et al.Prospective evaluation of prognostic variables from patient-completed questionnaires. 
-#'North Central Cancer Treatment Group.Journal of Clinical Oncology. 12(3):601-7, 1994.
+#' Dr. Cox and D. Oakes. Analysis of Survival Data
 #'
 #' @examples
 #'
