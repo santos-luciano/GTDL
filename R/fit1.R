@@ -38,6 +38,8 @@ mle.GTDL <- function(start,t,method = 'BFGS'){
                 Converged = op$convergence, Coefficients = TAB)
   rownames(mTab$Coefficients) <- c("lambda","alpha","beta")
   mTab$Coefficients <- round(mTab$Coefficients,4)
+  mTab$AIC <- -2*mTab$Lik+2*(2+length(mTab$Coefficients[,1]))
+  mTab$BIC <- -2*mTab$Lik+(2+length(mTab$Coefficients[,1]))*log(length(t))
   return(mTab)
 }
 

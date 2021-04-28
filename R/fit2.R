@@ -71,6 +71,8 @@ mle2.GTDL <- function(t,start,formula,censur,method = "BFGS"){
   rownames(mTab$Coefficients) <- c("lambda","alpha",paste0("beta ",c(1:(dim(mTab$Coefficients)[1]-2))))
   mTab$Lik <- round(mTab$Lik,4)
   mTab$Coefficients <- round(mTab$Coefficients,4)
+  mTab$AIC <- -2*mTab$Lik+2*(2+length(mTab$Coefficients[,1]))
+  mTab$BIC <- -2*mTab$Lik+(2+length(mTab$Coefficients[,1]))*log(length(t))
   return(mTab)
   
 }
