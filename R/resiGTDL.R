@@ -19,7 +19,8 @@ envelope.GTDL <- function(x){
   fy         <- range(d2s, d21, d22)
   plot(xq2, d2s, xlab = quote("Theoretical Quantiles"),
        ylab = quote("Quantile Residuals"), 
-       pch = 20, ylim = fy)
+       pch = 20, ylim = fy,cex.axis = 1.2,
+       cex.lab = 1.2, cex = 0.6, bg = 5)
   par(new = T)
   plot(xq2, d21, type = "l", ylim = fy, xlab = "", ylab = "", lwd=1.2)
   par(new = T)
