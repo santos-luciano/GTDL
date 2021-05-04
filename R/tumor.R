@@ -8,7 +8,7 @@
 #' @usage data(tumor)
 #' @format This data frame contains the following columns:
 #' \itemize{
-#' \item {t:} {survival time in days}
+#' \item {time:} {survival time in days}
 #' \item {censured:} {censored = 0, dead = 1}
 #' \item {group:} {large tumor = 0, small tumor = 1}
 #' }

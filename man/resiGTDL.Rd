@@ -4,7 +4,7 @@
 \alias{q.GTDL}
 \title{Residual value of the GTDL distribution}
 \usage{
-q.GTDL(t, formula, param, censura)
+q.GTDL(t, formula, param, censur)
 }
 \arguments{
 \item{t}{non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.}
@@ -13,13 +13,16 @@ q.GTDL(t, formula, param, censura)
 
 \item{param}{These are the lambda, alpha and gamma parameters of the GTDL distribution.}
 
-\item{censura}{absence of the occurrence of the event at the time of analysis.}
+\item{censur}{absence of the occurrence of the event at the time of analysis.}
 }
 \description{
 Residual value of the GTDL distribution
 }
 \examples{
 
+### Example 1
+
+require(survival)
 data(lung)
 lung <- lung[-14,]
 lung$ph.ecog[lung$ph.ecog==3]<-2
@@ -31,12 +34,13 @@ fit.model1 <- mle2.GTDL(t = t1,start = start1,
            formula = formula1,
            censur = censur1)
 r1 <- q.GTDL(t = t1,formula = formula1 ,param = fit.model1$Coefficients[,1],
-             censura = censur1)
+             censur = censur1)
 r1
 
+### Example 2
 
 data(tumor)
-t2 <- tumor$t
+t2 <- tumor$time
 formula2 <- ~tumor$group
 censur2 <- tumor$censured
 start2 <- c(1,-0.05,1.7)

@@ -34,7 +34,7 @@ envelope.GTDL <- function(x){
 #'
 #'@param t non-negative random variable representing the failure time and leave the snapshot failure rate, or danger.
 #'@param param These are the lambda, alpha and gamma parameters of the GTDL distribution.
-#'@param censura absence of the occurrence of the event at the time of analysis.
+#'@param censur absence of the occurrence of the event at the time of analysis.
 #'@param formula The structure matrix of covariates of dimension n x p
 #'@describe TESTE
 #'
@@ -44,6 +44,9 @@ envelope.GTDL <- function(x){
 #'
 #'@examples
 #'
+#'### Example 1
+#'
+#'require(survival)
 #'data(lung)
 #'lung <- lung[-14,]
 #'lung$ph.ecog[lung$ph.ecog==3]<-2
@@ -55,12 +58,13 @@ envelope.GTDL <- function(x){
 #'            formula = formula1,
 #'            censur = censur1)
 #'r1 <- q.GTDL(t = t1,formula = formula1 ,param = fit.model1$Coefficients[,1],
-#'              censura = censur1)
+#'              censur = censur1)
 #'r1
 #'
+#'### Example 2
 #'
 #'data(tumor)
-#'t2 <- tumor$t
+#'t2 <- tumor$time
 #'formula2 <- ~tumor$group
 #'censur2 <- tumor$censured
 #'start2 <- c(1,-0.05,1.7)
@@ -77,7 +81,7 @@ envelope.GTDL <- function(x){
 #'@import stats
 #'@import graphics
 
-q.GTDL <- function(t,formula,param,censura){
+q.GTDL <- function(t,formula,param,censur){
   x.aux <- model.matrix(formula)
   x <- matrix(x.aux[,-1],ncol = (ncol(x.aux)-1))
   p <- ncol(data.matrix(x))
@@ -88,7 +92,7 @@ q.GTDL <- function(t,formula,param,censura){
     conf[i] <- reability.GTDL(t=t[i],param=param.aux)  
   }
   
-  qr <- qnorm(censura* (1 - conf) + (1-censura)*runif(length(t),1-conf))
+  qr <- qnorm(censur* (1 - conf) + (1-censur)*runif(length(t),1-conf))
   oldpar <- par(no.readonly = TRUE)
   on.exit(par(oldpar))
   graphics::par(mfrow = c(1, 2), pty = "s", col = "royalblue")

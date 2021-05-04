@@ -22,7 +22,11 @@ Maximum probability estimate of the GTDL package
 }
 \examples{
 
+### Example 1
+
 require(survival)
+data(lung)
+
 lung <- lung[-14,]
 lung$ph.ecog[lung$ph.ecog==3]<-2
 t1 <- lung$time
@@ -34,16 +38,17 @@ fit.model1 <- mle2.GTDL(t = t1,start = start1,
                      censur = censur1)
 fit.model1
 
+### Example 2
 
 data(tumor)
-t2 <- tumor$t
+t2 <- tumor$time
 start2 <- c(1,-0.05,1.7)
 formula2 <- ~tumor$group
 censur2 <- tumor$censured
 fit.model2 <- mle2.GTDL(t = t2,start = start2,
                        formula = formula2,
                        censur = censur2)
-
+fit.model2
 
 }
 \references{
